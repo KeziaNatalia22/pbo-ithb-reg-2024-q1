@@ -54,22 +54,19 @@ public class RusdilinesController {
 
                 int hargaKm = first.getJarakTempuh();
 
-                System.out.println("Mau asuransi? bayar.. ");
-                boolean mau = scan.nextBoolean();
-
                 String makan = first.makanan.namaMakanan;
                 int total = first.makanan.total;
 
-                if (mau) {
+                if (first.asuransi) {
                     totalBiaya = (hargaKm * 15000)*0.1 + hargaKm*15000;
                 } else {
                     totalBiaya = hargaKm * 15000;
                 }
                 
                 if (makan != " ") {
-                    System.out.println("Kelas : First Class \nTotal biaya : " + totalBiaya + "Memesan makanan : " + makan + " dengan total : " + total );
+                    System.out.println("Kelas : First Class \nTotal biaya : " + totalBiaya + "Memesan makanan : " + makan + " dengan total : " + total + "\nAsuransi :" + first.asuransi);
                 } else {
-                    System.out.println("Kelas : First Class \nTotal biaya : " + totalBiaya);
+                    System.out.println("Kelas : First Class \nTotal biaya : " + totalBiaya + "\nAsuransi :" + first.asuransi);
                 }
             }
         }
@@ -85,9 +82,9 @@ public class RusdilinesController {
                 int hargaKg = ekonomi.getBagasi();
 
                 if (hargaKg >= 5) {
-                    totalSemwa = hargaKm *7500 + hargaKg*1500 + 5000;
+                    totalSemwa += hargaKm *7500 + hargaKg*1500 + 5000;
                 } else {
-                    totalSemwa = hargaKm *7500 + 5000;
+                    totalSemwa += hargaKm *7500 + 5000;
                 }
             }
             else if(tikets instanceof Bisnis){
@@ -97,20 +94,19 @@ public class RusdilinesController {
                 int hargaKg = bisnis.getBagasi();
 
                 String makan = bisnis.makanan.namaMakanan;
-                int total = bisnis.makanan.total;
                 if (makan != "") {
                     if (hargaKg >= 5) {
-                        totalBanget = hargaKm *10000 + hargaKg*2500;
-                        totalSemwa = totalBanget * 0.1 + totalBanget;
+                        totalBanget += hargaKm *10000 + hargaKg*2500;
+                        totalSemwa += totalBanget * 0.1 + totalBanget;
                     } else {
-                        totalBanget = hargaKm *10000;
-                        totalSemwa = totalBanget * 0.1 + totalBanget;
+                        totalBanget += hargaKm *10000;
+                        totalSemwa += totalBanget * 0.1 + totalBanget;
                     }
                 } else {
                     if (hargaKg >= 5) {
-                        totalSemwa = hargaKm *10000 + hargaKg*2500;
+                        totalSemwa += hargaKm *10000 + hargaKg*2500;
                     } else {
-                        totalSemwa = hargaKm *10000;
+                        totalSemwa += hargaKm *10000;
                     }
                 }
                 
@@ -119,16 +115,10 @@ public class RusdilinesController {
 
                 int hargaKm = first.getJarakTempuh();
 
-                System.out.println("Mau asuransi? bayar.. ");
-                boolean mau = scan.nextBoolean();
-
-                String makan = first.makanan.namaMakanan;
-                int total = first.makanan.total;
-
-                if (mau) {
-                    totalSemwa = (hargaKm * 15000)*0.1 + hargaKm*15000;
+                if (first.asuransi) {
+                    totalSemwa += (hargaKm * 15000)*0.1 + hargaKm*15000;
                 } else {
-                    totalSemwa = hargaKm * 15000;
+                    totalSemwa += hargaKm * 15000;
                 }
                 
             }

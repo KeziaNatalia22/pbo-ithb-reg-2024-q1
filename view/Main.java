@@ -48,11 +48,14 @@ public class Main {
             String makan = scan.nextLine();
             int total = scan.nextInt();
 
+            System.out.println("Mau asuransi? bayar.. ");
+            boolean mau = scan.nextBoolean();
+
             if (pesenMakanan) {
-                Tiket firstClass = new FirstClass(jarak, berat, new Makanan(makan, total));
+                Tiket firstClass = new FirstClass(jarak, berat, new Makanan(makan, total), mau);
                 tiket.add(firstClass);
             } else {
-                Tiket firstClass = new FirstClass(jarak, berat, new Makanan("", 0));
+                Tiket firstClass = new FirstClass(jarak, berat, new Makanan("", 0), false);
                 tiket.add(firstClass);
             }
         } else{
@@ -66,7 +69,7 @@ public class Main {
             if (menu == 1) {
                 controller.RusdilinesController.biayaTiket(tiket);
             } else if (menu == 2) {
-                // controller.RusdilinesController.biayaTotalPaket(tiket);
+                controller.RusdilinesController.totalSemua(tiket);
             }
         }
     }
