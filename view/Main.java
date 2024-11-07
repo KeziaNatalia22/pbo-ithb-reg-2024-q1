@@ -61,16 +61,17 @@ public class Main {
         } else{
             System.out.println("Gada pilihan!");
         }
-        System.out.println("Pilih menu \n1.Biaya Tiket km \n2.Biaya Total Paket sekaligus : ");
-        int menu = scan.nextInt();
-
-
+        
+        int menu = 0;
         while (menu <= 2 ) {
+            System.out.println("Pilih menu \n1.Biaya Tiket km \n2.Biaya Total Paket sekaligus : ");
+            menu = scan.nextInt();
+
             if (menu == 1) {
                 controller.RusdilinesController.biayaTiket(tiket);
             } else if (menu == 2) {
                 controller.RusdilinesController.totalSemua(tiket);
-            }
+            } 
         }
     }
 
